@@ -1,5 +1,5 @@
 # OnlineStore
-Training project "Online store 'LOMODA'"
+Training project 'Online store "LOMODA" '
 
 ## Technologies are used:
 - JavaScript
