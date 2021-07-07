@@ -52,6 +52,32 @@ const cartModalClose = () => {
   enableScroll();
 };
 
+// запрос базы данных
+const getData = async () => {
+  const data = await fetch('db.json');
+  
+  if (data.ok) {
+    return data.json();
+  } else {
+    throw new Error(`Данные не были получены, ошибка ${data.status} ${data.statusText}`);
+  } //console.log(data);
+};
+
+const getGoods = (callback) => {
+  getData()
+    .then(data => {
+      callback(data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+};
+// можно будет потом удалить
+getGoods((data) => {
+  console.warn(data);
+});
+
+
 subheaderCart.addEventListener('click', cartModalOpen);
 
 cartOverlay.addEventListener('click', event => {
@@ -61,3 +87,33 @@ cartOverlay.addEventListener('click', event => {
     cartModalClose();
   }
 });
+
+/*
+getData().then(data => {
+  console.log(data);
+}).catch(err => {
+  console.error(err);
+});*/
+
+/*
+getData().then(data => {
+  console.log(data);
+}, err => {
+  console.error(err);
+});*/
+
+//console.log('getData(): ', getData());
+//getData();
+
+// data2 выполнится раньше, чем data, т.к. data2 не асинхронна
+/*const getData2 = () => {
+  const data = fetch('db.json');
+
+  if (data.ok) {
+    return data.json();
+  }
+  //console.log(data);
+};
+//getData2();
+console.log('getData2(): ', getData2());
+*/
