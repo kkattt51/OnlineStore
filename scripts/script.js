@@ -14,6 +14,7 @@ const getLocalStorage = () => JSON?.parse(localStorage.getItem('cart-lomoda')) |
 const setLocalStorage = data => localStorage.setItem('cart-lomoda', JSON.stringify(data));
 
 const renderCart = () => {
+
   cartListGoods.textContent = '';
 
   const cartItems = getLocalStorage();
@@ -204,7 +205,7 @@ try {
 
 try {
   
-    if (!document.querySelector('.card__good')) {
+    if (!document.querySelector('.card-good')) {
       throw 'This is not a card-good page';
     }
 
